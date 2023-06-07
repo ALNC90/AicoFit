@@ -2,16 +2,16 @@ function showForm () { //Creamos la función "showForm" la cual se encargara de 
     var type= "";
     var type = document.getElementById("account_type").value; //Recogemos el tipo de cuenta que se ha seleccionado en la variable 'type' desde el elemento del HTML que tenga el id de 'account_type'
     //Si se ha seleccionado en el selector la opción de cliente se desplegará el formulario del cliente
-    if (type === "client")
+    if (type == "client")
     {
         document.getElementById("form_client").style.display = "block";
         document.getElementById("form_trainer").style.display = "none";
     }
     //En este caso se producirá el caso inverso se desplegará el formulario del entrenador.
-    else if (type === "trainer")
+    else if (type == "trainer")
     {
-        document.getElementById("form_client").style.display = "block";
-        document.getElementById("form_trainer").style.display = "none";
+        document.getElementById("form_client").style.display = "none";
+        document.getElementById("form_trainer").style.display = "block";
     }
     else
     {
