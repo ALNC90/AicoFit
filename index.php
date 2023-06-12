@@ -305,11 +305,11 @@
                     <form name="client_si" id="client_si" method="post" style="transform: translate(-10px, -320px);" onsubmit="return validateForm()">
                         <label style="font-size:24px;" for="username">USUARIO:</label>
                         <br>
-                        <input type="text" name="username" name="username" required maxlength="25" pattern="(?!.*\s)[A-Za-z0-9]{3,}">
+                        <input type="text" name="username" name="username" maxlength="25">
                         <br><br>
                         <label style="font-size:24px;" for="pass">CONTRASEÑA:</label>
                         <br>
-                        <input type="password" name="pass" id="pass" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+|~=`{}[:;<>?,.@#\]-])(?!.*\s).{8,}">
+                        <input type="password" name="password" id="pass">
                         <br><input type="hidden" name="type" value="client"><br>
                         <input type="submit"  value="Incia Sesión" name="client_si" style="transform: translate( 0px, 10px);">
                     </form>
@@ -319,11 +319,11 @@
                     <form name="trainer_si" id="trainer_si" method="post" style="transform: translate(300px, -320px);" onsubmit="return validateForm()">
                         <label style="font-size:24px;" for="username">USUARIO:</label>
                         <br>
-                        <input type="text" name="username" name="username" required maxlength="25" pattern="(?!.*\s)[A-Za-z0-9]{3,}">
+                        <input type="text" name="username" name="username" maxlength="25">
                         <br><br>
                         <label style="font-size:24px;" for="pass">CONTRASEÑA:</label>
                         <br>
-                        <input type="password" name="pass" id="pass" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+|~=`{}[:;<>?,.@#\]-])(?!.*\s).{8,}">
+                        <input type="password" name="password" id="pass">
                         <br><input type="hidden" name="type" value="trainer"><br>
                         <input type="submit"  value="Incia Sesión" name="client_si" style="transform: translate( 0px, 10px);">
                     </form>
@@ -353,6 +353,7 @@
                     else
                     {
                         echo '<script>alert("El usuario o la contraseña son incorrectas");</script>';
+                        echo '<script>document.getElementById("error-message").scrollIntoView();</script>';
                     }
                 } 
             ?>               

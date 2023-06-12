@@ -40,6 +40,10 @@ function validateForm() {
     if (username === "" || password === "")
     {
         alert("Please enter username and password");
+        document.getElementById("error-message").innerHTML = "Please enter username and password";
+        document.getElementById("error-message").style.fontWeight = "bold";
+        document.getElementById("error-message").style.marginTop = "10px";
+        document.getElementById("error-message").scrollIntoView();
         return false;
     }
 
