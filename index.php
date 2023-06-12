@@ -353,7 +353,6 @@
                     else
                     {
                         echo '<script>alert("El usuario o la contraseña son incorrectas");</script>';
-                        echo '<script>document.getElementById("error-message").scrollIntoView();</script>';
                     }
                 } 
             ?>               
