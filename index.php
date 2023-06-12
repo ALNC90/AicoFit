@@ -305,11 +305,11 @@
                     <form name="client_si" id="client_si" method="post" style="transform: translate(-10px, -320px);">
                         <label style="font-size:24px;" for="username">USUARIO:</label>
                         <br>
-                        <input type="text" name="username" name="username" maxlength="25">
+                        <input type="text" name="username" id="username" maxlength="25" required>
                         <br><br>
                         <label style="font-size:24px;" for="pass">CONTRASEÑA:</label>
                         <br>
-                        <input type="password" name="password" id="pass">
+                        <input type="password" name="password" id="pass" required>
                         <br><input type="hidden" name="type" value="client"><br>
                         <input type="submit"  value="Incia Sesión" name="client_si" style="transform: translate( 0px, 10px);">
                     </form>
@@ -319,11 +319,11 @@
                     <form name="trainer_si" id="trainer_si" method="post" style="transform: translate(300px, -320px);">
                         <label style="font-size:24px;" for="username">USUARIO:</label>
                         <br>
-                        <input type="text" name="username" name="username" maxlength="25">
+                        <input type="text" name="username" id="username" maxlength="25" required>
                         <br><br>
-                        <label style="font-size:24px;" for="pass">CONTRASEÑA:</label>
+                        <label style="font-size:24px;" for="password">CONTRASEÑA:</label>
                         <br>
-                        <input type="password" name="password" id="pass">
+                        <input type="password" name="password" id="password" required>
                         <br><input type="hidden" name="type" value="trainer"><br>
                         <input type="submit"  value="Incia Sesión" name="trainer_si" style="transform: translate(0px, 10px);">
                     </form>
@@ -343,9 +343,9 @@
                         $sql = $connection->prepare('SELECT * FROM trainers WHERE username = ?');
                         $sql->execute([$_POST['username']]);
                         $user = $sql->fetch();
-                    }
+                    }        
 
-                    if ($user && password_verify($_POST['password'], $user['password']))
+                    if ($user && password_verify($_POST['password'], $user['pass']))
                     {
                         header('Location: client_profile.php');
                         exit;
@@ -353,6 +353,10 @@
                     else
                     {
                         echo '<script>alert("El usuario o la contraseña son incorrectas");</script>';
+                        echo '<script>console.log("User: ' . $user['username'] . '");</script>';
+                        echo '<script>console.log("User: ' . $_POST['username'] . '");</script>';
+                        echo '<script>console.log("Password: ' . $_POST['password'] . '");</script>';
+                        echo '<script>console.log("Hashed Password: ' . $user['password'] . '");</script>';
                     }
                 } 
             ?>               

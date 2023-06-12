@@ -1,12 +1,4 @@
-<?php
-    $connection = mysqli_init();
-    mysqli_real_connect($connection,"aicofit-sqlserver.mysql.database.azure.com", "Aicofit_Admin", '3^cf$MzKfMu9Y#!u2CT5HDpV', "aicofit_db", 3306);
-
-    if (mysqli_connect_errno()) {
-        echo "Failed to connect to MySQL: " . mysqli_connect_error();
-        exit();
-    }
-?>
+<?php include 'db_connection.php';?>
 <html lang="es">
     <head>
         <!-- Etiquetas "meta" donde aportamos información sobre la página -->
@@ -110,7 +102,7 @@
                     <option value="trainer">Entrenador</option>
                 </select>
             </form>
-            <form name="form_client" id="form_client" style="display: none;" onsubmit="validatePass()"  method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+            <form name="form_client" id="form_client" style="display: none;" onsubmit="validatePass()"  method="post">
 
                 <h1>DATOS DE REGISTRO</h1>
                 <label for="username">Usuario:</label>
@@ -141,12 +133,12 @@
                 <br>
                 <span style="display: inline-block; width: 250px;"><input type="text" name="weight" pattern="[1-9][0-9]\.[0-9]" id="weight" required></span>
                 <input type="text" name="height" id="height" pattern="[1-9]\.[0-9][0-9]" required>
-                <br>
+                <br><input type="hidden" name="type" value="client">
                 <input type="submit"  value="Siguiente" name="create">
                 <br>
 
             </form>
-            <form name="form_trainer" id="form_trainer" style="display: none;" onsubmit="validatePass()"  method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+            <form name="form_trainer" id="form_trainer" style="display: none;" onsubmit="validatePass()"  method="post">
 
                 <h1>DATOS DE REGISTRO</h1>
                 <label for="username">Usuario:</label>
@@ -162,7 +154,7 @@
                 <span style="display: inline-block; width: 250px;"><input type="password" name="pass1" id="pass1" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+|~=`{}[:;<>?,.@#\]-])(?!.*\s).{8,}"></span>
                 <input type="password" name="pass2" id="pass2" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+|~=`{}[:;<>?,.@#\]-])(?!.*\s).{8,}">
                 <p>La contraseña debe contener un número, un caractér especial, una letra mayuscula y minuscula y mínimo 8 caracteres.</p>
-                <br>
+                <br><input type="hidden" name="type" value="trainer">
                 <input type="submit"  value="Siguiente" name="create">
 
             </form>
@@ -171,41 +163,78 @@
             {
                 $username = $_POST["username"];
                 $mail = $_POST["mail"];
-                $sql_user = "SELECT * FROM users WHERE username='$username'";
-                $sql_mail = "SELECT * FROM users WHERE email='$mail'";
-                $result_user = $connection->query($sql_user);
-                $result_mail = $connection->query($sql_mail);
+                if ($_POST['type'] === 'client')
+                {
+                    echo 'HOLAAAAAAAAAA';
+                    $sql_user = "SELECT * FROM users WHERE username='$username'";
+                    $sql_mail = "SELECT * FROM users WHERE email='$mail'";
+                    $result_user = $connection->query($sql_user);
+                    $result_mail = $connection->query($sql_mail);
 
-                if($result_user->num_rows > 0)
-                {
-                    echo '<script type=\"text/javascript\"> window.onload = function { alert("El nombre de usuario ya existe. Elija otro usuario diferente."); } </script>';
-                }
-                elseif ($result_mail->num_rows > 0)
-                {
-                    echo '<script type=\"text/javascript\"> window.onload = function { alert("El correo el electrónico ya se encuentra registrado en esta plataforma."); } </script>';
-                }
-                else
-                {
-                    $password = $_POST["pass1"];
-                    $firstname = $_POST["name"];
-                    $surname = $_POST["surname"];
-                    $age = $_POST["age"];
-                    $u_height = $_POST["height"];
-                    $u_weight = $_POST["weight"];
-                    $sql = "INSERT INTO users (username,email,pass,firstname,surename,age,u_weight,u_height) 
-                    VALUES ('$username','$mail','$password','$firstname','$surname',$age,$u_weight,$u_height)";
-
-                    if(mysqli_query($connection, $sql))
+                    if($result_user->num_rows > 0)
                     {
-                        echo "La cuenta se ha creado correctamente";
+                        echo '<script>alert("El nombre de usuario ya existe. Elija otro usuario diferente.");</script>';
+                    }
+                    elseif ($result_mail->num_rows > 0)
+                    {
+                        echo '<script>alert("El correo el electrónico ya se encuentra registrado en esta plataforma.");</script>';
                     }
                     else
                     {
-                    echo "Error: ". $sql . "<br>". mysqli_error($connection);
-                    }
+                        $password = $_POST["pass1"];
+                        $firstname = $_POST["name"];
+                        $surname = $_POST["surname"];
+                        $age = $_POST["age"];
+                        $u_height = $_POST["height"];
+                        $u_weight = $_POST["weight"];
+                        $sql = "INSERT INTO users (username,email,pass,firstname,surename,age,u_weight,u_height) 
+                        VALUES ('$username','$mail','$password','$firstname','$surname',$age,$u_weight,$u_height)";
 
+                        if(mysqli_query($connection, $sql))
+                        {
+                            echo '<script>alert("La cuenta se ha creado correctamente.");</script>';
+                        }
+                        else
+                        {
+                        echo "Error: ". $sql . "<br>". mysqli_error($connection);
+                        }
+
+                    }
+                    mysqli_close($connection);
                 }
-                mysqli_close($connection);
+                else if ($_POST['type'] === 'trainer')
+                {
+                    $sql_user = "SELECT * FROM trainers WHERE username='$username'";
+                    $sql_mail = "SELECT * FROM trainers WHERE email='$mail'";
+                    $result_user = $connection->query($sql_user);
+                    $result_mail = $connection->query($sql_mail);
+
+                    if($result_user->num_rows > 0)
+                    {
+                        echo '<script>alert("El nombre de usuario ya existe. Elija otro usuario diferente.");</script>';
+                    }
+                    elseif ($result_mail->num_rows > 0)
+                    {
+                        echo '<script>alert("El correo el electrónico ya se encuentra registrado en esta plataforma.");</script>';
+                    }
+                    else
+                    {
+                        $password = $_POST["pass1"];
+                        $sql = "INSERT INTO trainers (username,email,pass) 
+                        VALUES ('$username','$mail','$password')";
+
+                        if(mysqli_query($connection, $sql))
+                        {
+                            echo '<script>alert("La cuenta se ha creado correctamente.");</script>';
+                        }
+                        else
+                        {
+                        echo "Error: ". $sql . "<br>". mysqli_error($connection);
+                        }
+
+                    }
+                    mysqli_close($connection);
+                }
             }
             ?>
         </div>
