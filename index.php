@@ -330,6 +330,7 @@
                 </div>
             </span> 
             <?php
+                session_start();
                 if ($_SERVER['REQUEST_METHOD'] === 'POST')
                 {
                     if ($_POST['type'] === 'client')
@@ -342,15 +343,18 @@
                     }
                     else
                     {
-                        $sql = "SELECT * FROM users WHERE username = '".$_POST['username_t']."'";
-                        $user = $connection->query($sql);
-                        $result = $user->fetchassoc();
+                        $username = $_POST['username_t'];
+                        $password = $_POST['password'];
+                        $sql = "SELECT * FROM trainers WHERE username = '$username' AND pass = '$password'";
+                        $result = mysqli_query($connection,$sql);
+                        $row = mysqli_fetch_array($result);
                     }      
                     if (is_array($row))
                     {
-                        echo "<script>console.log('username_c: ".$_POST['username_c']."');</script>";
-                        $_SESSION["user_id"]=$row['user_id'];
-                        header("Location: client_profile.php");
+                        $_SESSION["user_id"]=$row['id'];
+                        print_r($_SESSION);
+                        header("Location:dashboard.php");
+                        
                     }
                     else
                     {
