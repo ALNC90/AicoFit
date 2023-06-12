@@ -303,9 +303,9 @@
                 <div>
                     <h3 style="transform: translate(-10px, -350px); color: white; font-size:24px;">CLIENTE</h3>
                     <form name="client_si" id="client_si" method="post" style="transform: translate(-10px, -320px);">
-                        <label style="font-size:24px;" for="username">USUARIO:</label>
+                        <label style="font-size:24px;" for="username_c">USUARIO:</label>
                         <br>
-                        <input type="text" name="username" id="username" maxlength="25" required>
+                        <input type="text" name="username_c" id="username_c" maxlength="25" required>
                         <br><br>
                         <label style="font-size:24px;" for="pass">CONTRASEÑA:</label>
                         <br>
@@ -317,9 +317,9 @@
                 <div>
                     <h3 style="transform: translate(300px, -350px); color: white; font-size:24px;">ENTRENADOR</h3>
                     <form name="trainer_si" id="trainer_si" method="post" style="transform: translate(300px, -320px);">
-                        <label style="font-size:24px;" for="username">USUARIO:</label>
+                        <label style="font-size:24px;" for="username_t">USUARIO:</label>
                         <br>
-                        <input type="text" name="username" id="username" maxlength="25" required>
+                        <input type="text" name="username_t" id="username_t" maxlength="25" required>
                         <br><br>
                         <label style="font-size:24px;" for="password">CONTRASEÑA:</label>
                         <br>
@@ -334,29 +334,27 @@
                 {
                     if ($_POST['type'] === 'client')
                     {
-                        $sql = $connection->prepare('SELECT * FROM users WHERE username = ?');
-                        $sql->execute([$_POST['username']]);
-                        $user = $sql->fetch();
+                        $username = $_POST['username_c'];
+                        $password = $_POST['password'];
+                        $sql = "SELECT * FROM users WHERE username = '$username' AND pass = '$password'";
+                        $result = mysqli_query($connection,$sql);
+                        $row = mysqli_fetch_array($result);
                     }
                     else
                     {
-                        $sql = $connection->prepare('SELECT * FROM trainers WHERE username = ?');
-                        $sql->execute([$_POST['username']]);
-                        $user = $sql->fetch();
-                    }        
-
-                    if ($user && password_verify($_POST['password'], $user['pass']))
+                        $sql = "SELECT * FROM users WHERE username = '".$_POST['username_t']."'";
+                        $user = $connection->query($sql);
+                        $result = $user->fetchassoc();
+                    }      
+                    if (is_array($row))
                     {
-                        header('Location: client_profile.php');
-                        exit;
+                        echo "<script>console.log('username_c: ".$_POST['username_c']."');</script>";
+                        $_SESSION["user_id"]=$row['user_id'];
+                        header("Location: client_profile.php");
                     }
                     else
                     {
                         echo '<script>alert("El usuario o la contraseña son incorrectas");</script>';
-                        echo '<script>console.log("User: ' . $user['username'] . '");</script>';
-                        echo '<script>console.log("User: ' . $_POST['username'] . '");</script>';
-                        echo '<script>console.log("Password: ' . $_POST['password'] . '");</script>';
-                        echo '<script>console.log("Hashed Password: ' . $user['password'] . '");</script>';
                     }
                 } 
             ?>               

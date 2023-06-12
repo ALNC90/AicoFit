@@ -165,7 +165,6 @@
                 $mail = $_POST["mail"];
                 if ($_POST['type'] === 'client')
                 {
-                    echo 'HOLAAAAAAAAAA';
                     $sql_user = "SELECT * FROM users WHERE username='$username'";
                     $sql_mail = "SELECT * FROM users WHERE email='$mail'";
                     $result_user = $connection->query($sql_user);
