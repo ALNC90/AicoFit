@@ -302,7 +302,7 @@
                 <h3 style="transform: translate(600px, -450px); color: white; font-size:30px;">ACCEDE</h3>
                 <div>
                     <h3 style="transform: translate(-10px, -350px); color: white; font-size:24px;">CLIENTE</h3>
-                    <form name="client_si" id="client_si" method="post" style="transform: translate(-10px, -320px);" onsubmit="return validateForm()">
+                    <form name="client_si" id="client_si" method="post" style="transform: translate(-10px, -320px);">
                         <label style="font-size:24px;" for="username">USUARIO:</label>
                         <br>
                         <input type="text" name="username" name="username" maxlength="25">
@@ -316,7 +316,7 @@
                 </div>
                 <div>
                     <h3 style="transform: translate(300px, -350px); color: white; font-size:24px;">ENTRENADOR</h3>
-                    <form name="trainer_si" id="trainer_si" method="post" style="transform: translate(300px, -320px);" onsubmit="return validateForm()">
+                    <form name="trainer_si" id="trainer_si" method="post" style="transform: translate(300px, -320px);">
                         <label style="font-size:24px;" for="username">USUARIO:</label>
                         <br>
                         <input type="text" name="username" name="username" maxlength="25">
@@ -325,7 +325,7 @@
                         <br>
                         <input type="password" name="password" id="pass">
                         <br><input type="hidden" name="type" value="trainer"><br>
-                        <input type="submit"  value="Incia Sesión" name="client_si" style="transform: translate( 0px, 10px);">
+                        <input type="submit"  value="Incia Sesión" name="trainer_si" style="transform: translate(0px, 10px);">
                     </form>
                 </div>
             </span> 
