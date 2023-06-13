@@ -40,6 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
             {
                 session_start();
                 $_SESSION["user_id"]=$row['id'];
+                echo "<script>console.log('Debug Objfffffffffffffffffffffffects: " . $hashed_password . "' );</script>";
                 header("Location:client_profile.php");   
             }
             else
