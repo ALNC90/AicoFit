@@ -41,6 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
                 session_start();
                 $_SESSION["user_id"]=$row['id'];
                 echo "<script>window.location.href='client_profile.php';</script>";
+                session_write_close();
             }
             else
             {
@@ -74,6 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
                 //header("Location:trainer_profile.php");  
                 //header("Location:https://aicofit.azurewebsites.net/trainer_profile.php");
                 echo "<script>window.location.href='trainer_profile.php';</script>";
+                session_write_close();
             }
             else
             {

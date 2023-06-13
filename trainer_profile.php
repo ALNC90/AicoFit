@@ -12,6 +12,7 @@
     {
         header("Location:index.php");
     }
+    session_write_close();
 ?>
 <html lang="es">
     <head>
@@ -53,6 +54,7 @@
         <div>
             <button>Crear rutina</button> 
             <button>Borrar rutina</button>
+            <a href="index.php"><button>Salir</button></a>
         <div>
     </body>
 </html>

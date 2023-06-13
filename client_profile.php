@@ -12,6 +12,7 @@
     {
         header("Location:index.php");
     }
+    session_write_close();
 ?>
 <html lang="es">
     <head>
