@@ -34,8 +34,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
     }      
     if (is_array($row))
     {
+        echo "<script>console.log('Debug Objffffffffffffffffeqfefrvfetgevbbreovbnuovbnerbvubrbwifffffffects: " . $hashed_password . "' );</script>";
         if ($_POST['type'] === 'client')
         {
+            echo "<script>console.log('Debug Objfffffffffffffffffefefefefeffeffffffffects: " . $hashed_password . "' );</script>";
             if ($hashed_password === $hash)
             {
                 session_start();
