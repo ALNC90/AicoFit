@@ -72,7 +72,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
             {
                 session_start();
                 $_SESSION["user_id"]=$row['id'];
-                header("Location:trainer_profile.php");  
+                //header("Location:trainer_profile.php");  
+                header("Location:https://aicofit.azurewebsites.net/trainer_profile.php");
             }
             else
             {
