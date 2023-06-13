@@ -34,17 +34,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
     }      
     if (is_array($row))
     {
-        echo "<script>console.log('Debug Objffffffffffffffffeqfefrvfetgevbbreovbnuovbnerbvubrbwifffffffects: " . $hashed_password . "' );</script>";
         if ($_POST['type'] === 'client')
         {
-            echo "<script>console.log('Debug Objfffffffffffffffffefefefefeffeffffffffects: " . $hashed_password . "' );</script>";
             if ($hashed_password === $hash)
             {
                 session_start();
                 $_SESSION["user_id"]=$row['id'];
-                echo "<script>console.log('Debug Objfffffffffffffffffffffffects: " . $hashed_password . "' );</script>";
-                header("Location:client_profile.php");   
-                echo "<script>console.log('Debug Objfffffffffffffffffefefefefeffefeeeeeeeeeeeeeeeeeeeeeeeeeeeeeqwdw3fg46g3vegvffffffffects: " . $hashed_password . "' );</script>";
+                //header("Location:client_profile.php");
+                header("Location:https://aicofit.azurewebsites.net/client_profile.php");
             }
             else
             {
