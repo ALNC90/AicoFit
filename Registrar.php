@@ -186,12 +186,15 @@
                         $age = $_POST["age"];
                         $u_height = $_POST["height"];
                         $u_weight = $_POST["weight"];
-                        $sql = "INSERT INTO users (username,email,pass,firstname,surename,age,u_weight,u_height) 
-                        VALUES ('$username','$mail','$password','$firstname','$surname',$age,$u_weight,$u_height)";
+                        $salt = bin2hex(random_bytes(32));
+                        $hashed_password = hash('sha256', $password . $salt);
+                        $sql = "INSERT INTO users (username,email,firstname,surename,age,u_weight,u_height,password_hash,salt) 
+                        VALUES ('$username','$mail','$firstname','$surname',$age,$u_weight,$u_height,'$hashed_password','$salt')";
 
                         if(mysqli_query($connection, $sql))
                         {
                             echo '<script>alert("La cuenta se ha creado correctamente.");</script>';
+                            echo "<script>window.location.href='index.php';</script>";
                         }
                         else
                         {
@@ -219,12 +222,15 @@
                     else
                     {
                         $password = $_POST["pass1"];
-                        $sql = "INSERT INTO trainers (username,email,pass) 
-                        VALUES ('$username','$mail','$password')";
+                        $salt = bin2hex(random_bytes(32));
+                        $hashed_password = hash('sha256', $password . $salt);
+                        $sql = "INSERT INTO trainers (username,email,password_hashed,salt) 
+                        VALUES ('$username','$mail','$hashed_password','$salt')";
 
                         if(mysqli_query($connection, $sql))
                         {
                             echo '<script>alert("La cuenta se ha creado correctamente.");</script>';
+                            echo "<script>window.location.href='index.php';</script>";
                         }
                         else
                         {

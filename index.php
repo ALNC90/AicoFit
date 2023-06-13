@@ -1,4 +1,3 @@
-<?php include 'db_connection.php';?>
 <html lang="es">
     <head>
         <!-- Etiquetas "meta" donde aportamos información sobre la página -->
@@ -6,7 +5,6 @@
         <meta name="Description" content="Página de gimnasio">
         <meta name="Keywords" content="PHP, Gym, HTML">
         <meta charset="UTF-8">
-
         <!-- Título de la página en el apartado de pestañas del navegador -->
         <title>Aico Fit</title>
     </head>
@@ -302,7 +300,7 @@
                 <h3 style="transform: translate(600px, -450px); color: white; font-size:30px;">ACCEDE</h3>
                 <div>
                     <h3 style="transform: translate(-10px, -350px); color: white; font-size:24px;">CLIENTE</h3>
-                    <form name="client_si" id="client_si" method="post" style="transform: translate(-10px, -320px);">
+                    <form name="client_si" id="client_si" method="post" style="transform: translate(-10px, -320px);" action="login.php">
                         <label style="font-size:24px;" for="username_c">USUARIO:</label>
                         <br>
                         <input type="text" name="username_c" id="username_c" maxlength="25" required>
@@ -316,7 +314,7 @@
                 </div>
                 <div>
                     <h3 style="transform: translate(300px, -350px); color: white; font-size:24px;">ENTRENADOR</h3>
-                    <form name="trainer_si" id="trainer_si" method="post" style="transform: translate(300px, -320px);">
+                    <form name="trainer_si" id="trainer_si" method="post" style="transform: translate(300px, -320px);" action="login.php">
                         <label style="font-size:24px;" for="username_t">USUARIO:</label>
                         <br>
                         <input type="text" name="username_t" id="username_t" maxlength="25" required>
@@ -328,40 +326,7 @@
                         <input type="submit"  value="Incia Sesión" name="trainer_si" style="transform: translate(0px, 10px);">
                     </form>
                 </div>
-            </span> 
-            <?php
-                session_start();
-                if ($_SERVER['REQUEST_METHOD'] === 'POST')
-                {
-                    if ($_POST['type'] === 'client')
-                    {
-                        $username = $_POST['username_c'];
-                        $password = $_POST['password'];
-                        $sql = "SELECT * FROM users WHERE username = '$username' AND pass = '$password'";
-                        $result = mysqli_query($connection,$sql);
-                        $row = mysqli_fetch_array($result);
-                    }
-                    else
-                    {
-                        $username = $_POST['username_t'];
-                        $password = $_POST['password'];
-                        $sql = "SELECT * FROM trainers WHERE username = '$username' AND pass = '$password'";
-                        $result = mysqli_query($connection,$sql);
-                        $row = mysqli_fetch_array($result);
-                    }      
-                    if (is_array($row))
-                    {
-                        $_SESSION["user_id"]=$row['id'];
-                        print_r($_SESSION);
-                        header("Location:dashboard.php");
-                        
-                    }
-                    else
-                    {
-                        echo '<script>alert("El usuario o la contraseña son incorrectas");</script>';
-                    }
-                } 
-            ?>               
+            </span>             
         </div>
         <div style="height:700px; width:100%; background-image: url(./Images/Fondos/Gym_6.jpg); background-size: 100% 900px; position:relative; top:729px; display:block;">
             <a name="routines"></a>
