@@ -88,5 +88,28 @@
         </table>
         <br>
         <span><h3>Rutina asignadas:</h3><span>
+        <?php
+            $id_rou = $row["id"];
+            $sql_rou = "SELECT * FROM routines WHERE id_client = '$id_rou'";
+            $result_rou = mysqli_query($connection,$sql_rou);
+
+            if(mysqli_num_rows($result_rou) > 0)
+            {
+                echo "<table>
+                        <tr>
+                            <th>Rutina</th>";
+                while($row_rou = mysqli_fetch_assoc($result_rou))
+                {
+                    echo "<tr>
+                            <td>Nombre:" . $row_rou['name_rou'] . "<br> Grupo muscular:" . $row_rou['muscular_group'] . "<br> Descripción:" . $row_rou['description_rou'] . "</td>
+                          </tr>";
+                }
+                echo "</table>";
+            }
+            else
+            {
+                echo "No hay rutinas disponibles.";
+            }
+        ?>
     </body>
 </html>
