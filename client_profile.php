@@ -97,12 +97,21 @@
             {
                 echo "<table>
                         <tr>
-                            <th>Rutina</th>";
+                            <th>Rutina</th>
+                            <th>Entrenador</th>
+                        </tr>";
                 while($row_rou = mysqli_fetch_assoc($result_rou))
                 {
+                    
+                    $id_trainer = $row_rou['id_trainer'];
+                    $sql_trainer = "SELECT username FROM trainers WHERE id = '$id_trainer'";
+                    $result_trainer = mysqli_query($connection,$sql_trainer);
+                    $row_trainer = mysqli_fetch_assoc($result_trainer);
+
                     echo "<tr>
-                            <td>Nombre:" . $row_rou['name_rou'] . "<br> Grupo muscular:" . $row_rou['muscular_group'] . "<br> Descripción:" . $row_rou['description_rou'] . "</td>
-                          </tr>";
+                            <td>Nombre: " . $row_rou['name_rou'] . "<br> Grupo muscular: " . $row_rou['muscular_group'] . "<br> Descripción: " . $row_rou['description_rou'] . "</td>
+                            <td>" . $row_trainer['username'] . "</td>
+                        </tr>";
                 }
                 echo "</table>";
             }
@@ -110,6 +119,6 @@
             {
                 echo "No hay rutinas disponibles.";
             }
-        ?>
+            ?>
     </body>
 </html>
