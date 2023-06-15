@@ -4,42 +4,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
 {
     if ($_POST['type'] === 'client')
     {
-        $username = $_POST['username_c'];
-        $password = $_POST['password'];
-        $stmt = $connection->prepare("SELECT * FROM users WHERE username = ?");
-        $stmt->bind_param("s", $username);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $row = mysqli_fetch_array($result);
-        //$hash = password_hash($row['pass'], PASSWORD_DEFAULT);
-        $hash = $row['password_hash'];
-        $hashed_password = hash('sha256', $password . $row['salt']);
-        echo "<script>console.log('Debug Objects: " . $row['username'] . "' );</script>";
-        echo "<script>console.log('Debug Objects: " . $username . "' );</script>";
-        echo "<script>console.log('Debug Objects: " . $password . "' );</script>";
-        echo "<script>console.log('Debug Objects: " . $hash . "' );</script>";
-        echo "<script>console.log('Debug Objects: " . $hashed_password . "' );</script>";
+        $username_c = $_POST['username_c'];
+        $password_c = $_POST['password'];
+        $sql_client = $connection->prepare("SELECT * FROM users WHERE username = ?");
+        $sql_client->bind_param("s", $username_c);
+        $sql_client->execute();
+        $result_client = $sql_client->get_result();
+        $row_client = mysqli_fetch_array($result_client);
+        $hash_client = $row_client['password_hash'];
+        $hashed_password = hash('sha256', $password_c . $row_client['salt']);
+        $row_trainer ="";
     }
     else
     {
-        $username = $_POST['username_t'];
-        $password = $_POST['password'];
-        $stmt = $connection->prepare("SELECT * FROM trainers WHERE username = ?");
-        $stmt->bind_param("s", $username);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $row = mysqli_fetch_array($result);
-        $hash = $row['password_hashed'];
-        $hashed_password = hash('sha256', $password . $row['salt']);
+        $username_t = $_POST['username_t'];
+        $password_t = $_POST['password'];
+        $sql_trainer = $connection->prepare("SELECT * FROM trainers WHERE username = ?");
+        $sql_trainer->bind_param("s", $username_t);
+        $sql_trainer->execute();
+        $result_trainer = $sql_trainer->get_result();
+        $row_trainer = mysqli_fetch_array($result_trainer);
+        $hash_trainer = $row_trainer['password_hashed'];
+        $hashed_password = hash('sha256', $password_t . $row_trainer['salt']);
+        $row_client ="";
     }      
-    if (is_array($row))
+    if (is_array($row_client) || is_array($row_trainer))
     {
         if ($_POST['type'] === 'client')
         {
-            if ($hashed_password === $hash)
+            if ($hashed_password === $hash_client)
             {
                 session_start();
-                $_SESSION["user_id"]=$row['id'];
+                $_SESSION["user_id"]=$row_client['id'];
                 echo "<script>window.location.href='client_profile.php';</script>";
                 session_write_close();
             }
@@ -68,10 +64,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
         }
         else
         {
-            if ($hashed_password === $hash)
+            if ($hashed_password === $hash_trainer)
             {
                 session_start();
-                $_SESSION["user_id"]=$row['id'];
+                $_SESSION["user_id"]=$row_trainer['id'];
                 //header("Location:trainer_profile.php");  
                 //header("Location:https://aicofit.azurewebsites.net/trainer_profile.php");
                 echo "<script>window.location.href='trainer_profile.php';</script>";

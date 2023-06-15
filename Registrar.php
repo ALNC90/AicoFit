@@ -188,17 +188,17 @@
                         $u_weight = $_POST["weight"];
                         $salt = bin2hex(random_bytes(32));
                         $hashed_password = hash('sha256', $password . $salt);
-                        $sql = "INSERT INTO users (username,email,firstname,surename,age,u_weight,u_height,password_hash,salt) 
+                        $sql_client = "INSERT INTO users (username,email,firstname,surename,age,u_weight,u_height,password_hash,salt) 
                         VALUES ('$username','$mail','$firstname','$surname',$age,$u_weight,$u_height,'$hashed_password','$salt')";
 
-                        if(mysqli_query($connection, $sql))
+                        if(mysqli_query($connection, $sql_client))
                         {
                             echo '<script>alert("La cuenta se ha creado correctamente.");</script>';
                             echo "<script>window.location.href='index.php';</script>";
                         }
                         else
                         {
-                        echo "Error: ". $sql . "<br>". mysqli_error($connection);
+                        echo "Error: ". $sql_client . "<br>". mysqli_error($connection);
                         }
 
                     }
@@ -224,17 +224,17 @@
                         $password = $_POST["pass1"];
                         $salt = bin2hex(random_bytes(32));
                         $hashed_password = hash('sha256', $password . $salt);
-                        $sql = "INSERT INTO trainers (username,email,password_hashed,salt) 
+                        $sql_trainer = "INSERT INTO trainers (username,email,password_hashed,salt) 
                         VALUES ('$username','$mail','$hashed_password','$salt')";
 
-                        if(mysqli_query($connection, $sql))
+                        if(mysqli_query($connection, $sql_trainer))
                         {
                             echo '<script>alert("La cuenta se ha creado correctamente.");</script>';
                             echo "<script>window.location.href='index.php';</script>";
                         }
                         else
                         {
-                        echo "Error: ". $sql . "<br>". mysqli_error($connection);
+                        echo "Error: ". $sql_trainer . "<br>". mysqli_error($connection);
                         }
 
                     }
