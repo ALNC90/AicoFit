@@ -117,7 +117,7 @@
             }
             else
             {
-                echo "<span>No hay rutinas disponibles.<span>";
+                echo "<div style=display:center;>No hay rutinas disponibles.</div>";
             }
             ?>
     </body>

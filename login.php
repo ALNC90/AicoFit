@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
             }
             else
             {
-                // Increment failed login attempts
+                
                 session_start();
                 if (!isset($_SESSION["login_attempts"]))
                 {
@@ -49,10 +49,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
                 }
                 $_SESSION["login_attempts"]++;
                 
-                // Lock out user after 5 failed login attempts
+                
                 if ($_SESSION["login_attempts"] >= 5)
                 {
-                    //sleep(60); // Delay for 60 seconds
+                    sleep(60);
                     $_SESSION["login_attempts"] = 0;
                 }
                 
@@ -75,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
             }
             else
             {
-                // Increment failed login attempts
+                
                 session_start();
                 if (!isset($_SESSION["login_attempts"]))
                 {
@@ -83,10 +83,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
                 }
                 $_SESSION["login_attempts"]++;
                 
-                // Lock out user after 5 failed login attempts
+                
                 if ($_SESSION["login_attempts"] >= 5)
                 {
-                    sleep(60); // Delay for 60 seconds
+                    sleep(60); 
                     $_SESSION["login_attempts"] = 0;
                 }
                 

@@ -265,9 +265,9 @@
                     </a>
 
                     <!-- Botón para el acceso al contacto -->
-                    <a href="contacto.php">
+                    <a href="index.php#contact">
                         <div class="button sweep-to-left selector">
-                            <img alt="Acceso" src="Images/Botones/Contant_Us.png" style="height: 55px; width: 55px; transform: translate(-16px , 10px);">
+                            <a href="index.php#contact"><img alt="Acceso" src="Images/Botones/Contant_Us.png" style="height: 55px; width: 55px; transform: translate(-16px , 10px);"></a>
                             <h4 style="transform: translate(-14px , 5px);">Contacto</h4>
                         </div>
                     </a>
@@ -379,13 +379,14 @@
             </span>
         </div>
         <div style="height:700px; width:100%; background-image: url(./Images/Fondos/Gym_6.jpg); background-size: 100% 900px; position:relative; top:729px; display:block;">
+        <a name="contact"></a>
             <span style="position: relative; display:flex; top:100px;">
                 <h3 style="transform: translate(580px, -80px); color: white; font-size:30px;">CONTACTO</h3>
                 <img alt="telephone" src="Images/Botones/Telephone.png" style="height: 55px; width: 55px; transform: translate(100px , 60px);">
                 <p style="color:white; transform: translate(120px , 45px); font-size:18px; font-family:'News Gothic'; width:500px;">Telefono de contacto: +34 675 464 238<p>
-                <img alt="location" src="Images/Botones/Location.png" style="height: 65px; width: 35px; transform: translate(400px , -30px);">
-                <p style="color:white; transform: translate(360px , -120px); font-size:18px; font-family:'News Gothic';">Dirección: C. Agustín Calvo, 49, 28043 Madrid<p>
-                <img alt="Acceso" src="Images/Fondos/Address.jpg" style=" width:800px; height:400px; transform: translate(-20px , 200px); border-radius:8px;">
+                <img alt="location" src="Images/Botones/Location.png" style="height: 65px; width: 35px; transform: translate(330px , 40px);">
+                <p style="color:white; transform: translate(360px , 30px); font-size:18px; font-family:'News Gothic';">Dirección: C. Agustín Calvo, 49, 28043 Madrid<p>
+                <img alt="Acceso" src="Images/Fondos/Address.jpg" style=" width:800px; height:400px; transform: translate(-320px , 150px); border-radius:8px;">
             </span>
         </div>
     </body>
