@@ -1,9 +1,9 @@
 <?php 
     session_start();
     include 'db_connection.php';
-    if(isset($_SESSION["client_id"]))
+    if(isset($_SESSION["trainer_id"]))
     {
-        $id = $_SESSION["client_id"];
+        $id = $_SESSION["trainer_id"];
         $sql = "SELECT * FROM trainers WHERE id = '$id'";
         $result = mysqli_query($connection,$sql);
         $row_trainer = mysqli_fetch_array($result);
