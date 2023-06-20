@@ -180,7 +180,7 @@
                     }
                     else
                     {
-                        $password = $_POST["pass1"];
+                        $password = $_POST["pass1_c"];
                         $firstname = $_POST["name"];
                         $surname = $_POST["surname"];
                         $age = $_POST["age"];
@@ -221,7 +221,7 @@
                     }
                     else
                     {
-                        $password = $_POST["pass1"];
+                        $password = $_POST["pass1_t"];
                         $salt = bin2hex(random_bytes(32));
                         $hashed_password = hash('sha256', $password . $salt);
                         $sql_trainer = "INSERT INTO trainers (username,email,password_hashed,salt) 

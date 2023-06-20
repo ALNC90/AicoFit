@@ -65,6 +65,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
         }
         else
         {
+            echo "<script>console.log('$hashed_password');</script>";
+            echo "<script>console.log('$hash_trainer');</script>";
             if ($hashed_password === $hash_trainer)
             {
                 session_start();
