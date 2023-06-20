@@ -64,16 +64,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
         }
         else
         {
-            echo "<script>console.log('$hashed_password');</script>";
-            echo "<script>console.log('$hash_trainer');</script>";
             echo "<script>console.log(".$row_trainer['id'].");</script>";
             if ($hashed_password === $hash_trainer)
             {
                 session_start();
                 $_SESSION["trainer_id"]=$row_trainer['id'];
-                echo "<script>console.log('HOLA');</script>";
-                echo "<script>console.log(".$row_trainer['id'].");</script>";
-                echo "<script>console.log(".$_SESSION['trainer_id'].");</script>";
                 echo "<script>window.location.href='trainer_profile.php';</script>";
             }
             else
