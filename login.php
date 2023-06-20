@@ -67,12 +67,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
         {
             echo "<script>console.log('$hashed_password');</script>";
             echo "<script>console.log('$hash_trainer');</script>";
+            echo "<script>console.log(".$row_trainer['id'].");</script>";
             if ($hashed_password === $hash_trainer)
             {
                 session_start();
                 $_SESSION["user_id"]=$row_trainer['id'];
-                //header("Location:trainer_profile.php");  
-                //header("Location:https://aicofit.azurewebsites.net/trainer_profile.php");
                 echo "<script>window.location.href='trainer_profile.php';</script>";
                 session_write_close();
             }
