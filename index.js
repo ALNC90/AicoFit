@@ -21,6 +21,7 @@ function showForm () { //Creamos la función "showForm" la cual se encargara de 
 }
 
 function validatePass_client() {
+    console.log("Holaaaaaa que tal?");
     var pass1 = document.getElementById("pass1").value;
     var pass2 = document.getElementById("pass2").value;
 
@@ -34,6 +35,7 @@ function validatePass_client() {
 }
 
 function validatePass_trainer() {
+    console.log("Holaaaaaa");
     var pass1 = document.getElementById("pass1").value;
     var pass2 = document.getElementById("pass2").value;
 

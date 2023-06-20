@@ -102,7 +102,7 @@
                     <option value="trainer">Entrenador</option>
                 </select>
             </form>
-            <form name="form_client" id="form_client" style="display: none;" onsubmit="validatePass_client()"  method="post">
+            <form name="form_client" id="form_client" style="display: none;" onsubmit="return validatePass_client()"  method="post">
 
                 <h1>DATOS DE REGISTRO</h1>
                 <label for="username">Usuario:</label>
@@ -138,7 +138,7 @@
                 <br>
 
             </form>
-            <form name="form_trainer" id="form_trainer" style="display: none;" onsubmit="validatePass_trainer()"  method="post">
+            <form name="form_trainer" id="form_trainer" style="display: none;" onsubmit="return validatePass_trainer()"  method="post">
 
                 <h1>DATOS DE REGISTRO</h1>
                 <label for="username">Usuario:</label>
