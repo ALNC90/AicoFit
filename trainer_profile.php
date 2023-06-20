@@ -13,8 +13,9 @@
     {
         echo "<script>console.log(".$_SESSION['trainer_id'].");</script>";
         header("Location:index.php");
+        session_destroy();
     }
-    session_write_close();
+    
 ?>
 <html lang="es">
     <head>
@@ -76,7 +77,7 @@
             <button onclick="showCreateForm()">Crear rutina</button> 
             <button onclick="showDeleteTable()">Borrar rutina</button>
             <br><br>
-            <a href="index.php"><button>Salir</button></a>
+            <button onclick="location.href='sign_out.php'">Salir</button>
             <br><br>
         </div>
         <form name="routine_form" id="routine_form" style="display:none" method="post">

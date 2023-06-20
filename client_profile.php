@@ -120,5 +120,6 @@
                 echo "<div style=display:center;>No hay rutinas disponibles.</div>";
             }
             ?>
+            <div style="display:center"><button onclick="location.href='sign_out.php'">Salir</button></div>
     </body>
 </html>
