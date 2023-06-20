@@ -1,5 +1,7 @@
 <?php 
+    echo "<script>console.log(".$_SESSION['trainer_id'].");</script>";
     session_start();
+    echo "<script>console.log(".$_SESSION['trainer_id'].");</script>";
     include 'db_connection.php';
     if(isset($_SESSION["trainer_id"]))
     {
