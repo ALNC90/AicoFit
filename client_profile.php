@@ -11,8 +11,8 @@
     else
     {
         header("Location:index.php");
+        session_destroy();
     }
-    session_write_close();
 ?>
 <html lang="es">
     <head>
