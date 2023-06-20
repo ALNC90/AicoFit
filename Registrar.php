@@ -102,7 +102,7 @@
                     <option value="trainer">Entrenador</option>
                 </select>
             </form>
-            <form name="form_client" id="form_client" style="display: none;" onsubmit="return validatePass_client()"  method="post">
+            <form name="form_client" id="form_client" style="display: none;" onsubmit="return validatePassClient()"  method="post">
 
                 <h1>DATOS DE REGISTRO</h1>
                 <label for="username">Usuario:</label>
@@ -113,10 +113,10 @@
                 <br>
                 <input type="email" name="mail" id="mail" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}">
                 <br>
-                <label for="pass1"><span style="display: inline-block; width: 253px;">Contraseña:</span></label><label for="pass2">Repite la contraseña:</label>
+                <label for="pass1_c"><span style="display: inline-block; width: 253px;">Contraseña:</span></label><label for="pass2_c">Repite la contraseña:</label>
                 <br>
-                <span style="display: inline-block; width: 250px;"><input type="password" name="pass1" id="pass1" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+|~=`{}[:;<>?,.@#\]-])(?!.*\s).{8,}"></span>
-                <input type="password" name="pass2" id="pass2" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+|~=`{}[:;<>?,.@#\]-])(?!.*\s).{8,}">
+                <span style="display: inline-block; width: 250px;"><input type="password" name="pass1_c" id="pass1_c" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+|~=`{}[:;<>?,.@#\]-])(?!.*\s).{8,}"></span>
+                <input type="password" name="pass2_c" id="pass2_c" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+|~=`{}[:;<>?,.@#\]-])(?!.*\s).{8,}">
                 <p>La contraseña debe contener un número, un caractér especial, una letra mayuscula y minuscula y mínimo 8 caracteres.</p>
 
                 <h1>DATOS PERSONALES</h1>
@@ -138,7 +138,7 @@
                 <br>
 
             </form>
-            <form name="form_trainer" id="form_trainer" style="display: none;" onsubmit="return validatePass_trainer()"  method="post">
+            <form name="form_trainer" id="form_trainer" style="display: none;" onsubmit="return validatePassTrainer()"  method="post">
 
                 <h1>DATOS DE REGISTRO</h1>
                 <label for="username">Usuario:</label>
@@ -149,10 +149,10 @@
                 <br>
                 <input type="email" name="mail" id="mail" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}">
                 <br>
-                <label for="pass1"><span style="display: inline-block; width: 253px;">Contraseña:</span></label><label for="pass2">Repite la contraseña:</label>
+                <label for="pass1_t"><span style="display: inline-block; width: 253px;">Contraseña:</span></label><label for="pass2_t">Repite la contraseña:</label>
                 <br>
-                <span style="display: inline-block; width: 250px;"><input type="password" name="pass1" id="pass1" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+|~=`{}[:;<>?,.@#\]-])(?!.*\s).{8,}"></span>
-                <input type="password" name="pass2" id="pass2" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+|~=`{}[:;<>?,.@#\]-])(?!.*\s).{8,}">
+                <span style="display: inline-block; width: 250px;"><input type="password" name="pass1_t" id="pass1_t" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+|~=`{}[:;<>?,.@#\]-])(?!.*\s).{8,}"></span>
+                <input type="password" name="pass2_t" id="pass2_t" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+|~=`{}[:;<>?,.@#\]-])(?!.*\s).{8,}">
                 <p>La contraseña debe contener un número, un caractér especial, una letra mayuscula y minuscula y mínimo 8 caracteres.</p>
                 <br><input type="hidden" name="type" value="trainer">
                 <input type="submit"  value="Siguiente" name="create">

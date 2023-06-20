@@ -20,12 +20,11 @@ function showForm () { //Creamos la función "showForm" la cual se encargara de 
     }
 }
 
-function validatePass_client() {
-    console.log("Holaaaaaa que tal?");
-    var pass1 = document.getElementById("pass1").value;
-    var pass2 = document.getElementById("pass2").value;
+function validatePassClient() {
+    var cpass1 = document.getElementById("pass1_c").value;
+    var cpass2 = document.getElementById("pass2_c").value;
 
-    if (pass1 !== pass2)
+    if (cpass1 !== cpass2)
     {
         alert("¡Las contraseñas no coinciden!");
         return false;
@@ -34,12 +33,11 @@ function validatePass_client() {
     return true;
 }
 
-function validatePass_trainer() {
-    console.log("Holaaaaaa");
-    var pass1 = document.getElementById("pass1").value;
-    var pass2 = document.getElementById("pass2").value;
+function validatePassTrainer() {
+    var tpass1 = document.getElementById("pass1_t").value;
+    var tpass2 = document.getElementById("pass2_t").value;
 
-    if (pass1 !== pass2)
+    if (tpass1 !== tpass2)
     {
         alert("¡Las contraseñas no coinciden!");
         return false;
