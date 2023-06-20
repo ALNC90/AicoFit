@@ -1,14 +1,8 @@
 <?php 
-    echo "<script>console.log('HOLA1');</script>";
-    echo "<script>console.log(".$_SESSION['trainer_id'].");</script>";
     session_start();
-    echo "<script>console.log('HOLA2');</script>";
-    echo "<script>console.log(".$_SESSION['trainer_id'].");</script>";
     include 'db_connection.php';
     if(isset($_SESSION["trainer_id"]))
     {
-        echo "<script>console.log('HOLA3');</script>";
-        echo "<script>console.log(".$_SESSION['trainer_id'].");</script>";
         $id = $_SESSION["trainer_id"];
         $sql = "SELECT * FROM trainers WHERE id = '$id'";
         $result = mysqli_query($connection,$sql);

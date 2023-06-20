@@ -71,6 +71,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
             {
                 session_start();
                 $_SESSION["trainer_id"]=$row_trainer['id'];
+                echo "<script>console.log('HOLA');</script>";
+                echo "<script>console.log(".$row_trainer['id'].");</script>";
                 echo "<script>console.log(".$_SESSION['trainer_id'].");</script>";
                 echo "<script>window.location.href='trainer_profile.php';</script>";
             }
