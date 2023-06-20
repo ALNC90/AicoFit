@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
                 
                 if ($_SESSION["login_attempts"] >= 5)
                 {
-                    echo "<script>alert('Tu inicio de sesión se ha bloqueado por 60 segundos.');</script>";
+                    echo '<script>alert("Has superado el número de intentos tu cuanta se ha bloqueado por 60 segundos.");</script>';
                     sleep(60);
                     $_SESSION["login_attempts"] = 0;
                 }
@@ -87,7 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
                 
                 if ($_SESSION["login_attempts"] >= 5)
                 {
-                    echo "<script>alert('Tu inicio de sesión se ha bloqueado por 60 segundos.');</script>";
+                    echo '<script>alert("Has superado el número de intentos tu cuanta se ha bloqueado por 60 segundos.");</script>';
                     sleep(60); 
                     $_SESSION["login_attempts"] = 0;
                 }
