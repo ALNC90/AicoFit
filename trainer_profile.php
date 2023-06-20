@@ -10,11 +10,9 @@
     }
     else
     {
-        echo "<script>console.log(".$_SESSION['trainer_id'].");</script>";
         header("Location:index.php");
         session_destroy();
     }
-    
 ?>
 <html lang="es">
     <head>
