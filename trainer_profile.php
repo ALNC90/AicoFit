@@ -1,15 +1,17 @@
 <?php 
     session_start();
     include 'db_connection.php';
-    if(isset($_SESSION["user_id"]))
+    if(isset($_SESSION["trainer_id"]))
     {
-        $id = $_SESSION["user_id"];
+        echo "<script>console.log(".$_SESSION['trainer_id'].");</script>";
+        $id = $_SESSION["trainer_id"];
         $sql = "SELECT * FROM trainers WHERE id = '$id'";
         $result = mysqli_query($connection,$sql);
         $row_trainer = mysqli_fetch_array($result);
     }
     else
     {
+        echo "<script>console.log(".$_SESSION['trainer_id'].");</script>";
         header("Location:index.php");
     }
     session_write_close();

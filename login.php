@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
             if ($hashed_password === $hash_client)
             {
                 session_start();
-                $_SESSION["user_id"]=$row_client['id'];
+                $_SESSION["client_id"]=$row_client['id'];
                 echo "<script>window.location.href='client_profile.php';</script>";
                 session_write_close();
             }
@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
             if ($hashed_password === $hash_trainer)
             {
                 session_start();
-                $_SESSION["user_id"]=$row_trainer['id'];
+                $_SESSION["trainer_id"]=$row_trainer['id'];
                 echo "<script>window.location.href='trainer_profile.php';</script>";
                 session_write_close();
             }

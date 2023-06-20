@@ -1,9 +1,9 @@
 <?php 
     session_start();
     include 'db_connection.php';
-    if(isset($_SESSION["user_id"]))
+    if(isset($_SESSION["client_id"]))
     {
-        $id = $_SESSION["user_id"];
+        $id = $_SESSION["client_id"];
         $sql = "SELECT * FROM users WHERE id = '$id'";
         $result = mysqli_query($connection,$sql);
         $row = mysqli_fetch_array($result);
