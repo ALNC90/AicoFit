@@ -20,7 +20,20 @@ function showForm () { //Creamos la función "showForm" la cual se encargara de 
     }
 }
 
-function validatePass() {
+function validatePass_client() {
+    var pass1 = document.getElementById("pass1").value;
+    var pass2 = document.getElementById("pass2").value;
+
+    if (pass1 !== pass2)
+    {
+        alert("¡Las contraseñas no coinciden!");
+        return false;
+    }
+
+    return true;
+}
+
+function validatePass_trainer() {
     var pass1 = document.getElementById("pass1").value;
     var pass2 = document.getElementById("pass2").value;
 
