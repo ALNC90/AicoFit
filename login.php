@@ -66,6 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
             echo "<script>console.log(".$row_trainer['id'].");</script>";
             if ($hashed_password === $hash_trainer)
             {
+                session_destroy();
                 session_start();
                 $_SESSION["trainer_id"]=$row_trainer['id'];
                 $_SESSION["prueba"]=$row_trainer['id'];
