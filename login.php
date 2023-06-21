@@ -13,7 +13,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
         $row_client = mysqli_fetch_array($result_client);
         $hash_client = $row_client['password_hash'];
         $hashed_password = hash('sha256', $password_c . $row_client['salt']);
-        $row_trainer ="";
     }
     else
     {
@@ -26,7 +25,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
         $row_trainer = mysqli_fetch_array($result_trainer);
         $hash_trainer = $row_trainer['password_hashed'];
         $hashed_password = hash('sha256', $password_t . $row_trainer['salt']);
-        $row_client ="";
     }      
     if (is_array($row_client) || is_array($row_trainer))
     {
@@ -64,11 +62,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
         }
         else
         {
+            echo "<script>console.log('id antes de inicar sesión');</script>";
             echo "<script>console.log(".$row_trainer['id'].");</script>";
             if ($hashed_password === $hash_trainer)
             {
                 session_start();
                 $_SESSION["trainer_id"]=$row_trainer['id'];
+                echo "<script>console.log('ids antes de ir al perfil');</script>";
+                echo "<script>console.log(".$row_trainer['id'].");</script>";
+                echo "<script>console.log(".$_SESSION['trainer_id'].");</script>";
                 echo "<script>window.location.href='trainer_profile.php';</script>";
             }
             else

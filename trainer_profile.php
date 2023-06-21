@@ -1,9 +1,15 @@
 <?php 
     session_start();
+    echo "<script>console.log('Sesion inciada');</script>";
+    echo "<script>console.log(".$_SESSION['trainer_id'].");</script>";
     include 'db_connection.php';
     if(isset($_SESSION["trainer_id"]))
     {
+        echo "<script>console.log('Entro en condición');</script>";
+        echo "<script>console.log(".$_SESSION['trainer_id'].");</script>";
         $id = $_SESSION["trainer_id"];
+        echo "<script>console.log('Muestro id');</script>";
+        echo "<script>console.log(".$id.");</script>";
         $sql = "SELECT * FROM trainers WHERE id = '$id'";
         $result = mysqli_query($connection,$sql);
         $row_trainer = mysqli_fetch_array($result);
