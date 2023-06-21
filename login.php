@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'db_connection.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST')
 {
@@ -32,14 +33,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
         {
             if ($hashed_password === $hash_client)
             {
-                session_start();
+                //session_start();
                 $_SESSION["client_id"]=$row_client['id'];
                 echo "<script>window.location.href='client_profile.php';</script>";
             }
             else
             {
                 
-                session_start();
+                //session_start();
                 if (!isset($_SESSION["login_attempts"]))
                 {
                     $_SESSION["login_attempts"] = 0;
@@ -66,8 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
             echo "<script>console.log(".$row_trainer['id'].");</script>";
             if ($hashed_password === $hash_trainer)
             {
-                session_destroy();
-                session_start();
+                //session_start();
                 $_SESSION["trainer_id"]=$row_trainer['id'];
                 $_SESSION["prueba"]=$row_trainer['id'];
                 echo "<script>console.log('ids antes de ir al perfil');</script>";
@@ -78,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
             else
             {
                 
-                session_start();
+                //session_start();
                 if (!isset($_SESSION["login_attempts"]))
                 {
                     $_SESSION["login_attempts"] = 0;

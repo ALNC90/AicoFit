@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <html lang="es">
     <head>
         <!-- Etiquetas "meta" donde aportamos información sobre la página -->
