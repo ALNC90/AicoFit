@@ -4,6 +4,7 @@
     echo "<script>console.log(".$_SESSION['trainer_id'].");</script>";
     echo "<script>console.log(".$_SESSION['prueba'].");</script>";
     include 'db_connection.php';
+    echo "<script>console.log('Sesion inciada 2222');</script>";
     if(isset($_SESSION["trainer_id"]))
     {
         echo "<script>console.log('Entro en condición');</script>";
