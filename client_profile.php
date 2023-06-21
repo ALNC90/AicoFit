@@ -1,9 +1,12 @@
 <?php 
     session_start();
+    echo "<script>console.log('id antes de inicar sesión');</script>";
+    echo "<script>console.log(".$_SESSION['client_id'].");</script>";
     include 'db_connection.php';
     if(isset($_SESSION["client_id"]))
     {
         $id = $_SESSION["client_id"];
+        echo "<script>console.log(".$_SESSION['client_id'].");</script>";
         $sql = "SELECT * FROM users WHERE id = '$id'";
         $result = mysqli_query($connection,$sql);
         $row = mysqli_fetch_array($result);
