@@ -68,6 +68,26 @@
             width: 50%;  
             font-family: 'News Gothic';
         }
+        button
+        {
+            background-color: #0db9d3;
+            border: none;
+            color: #0db9d3;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            border-radius: 3px;
+            background-color: transparent;
+            border: 2px solid #0db9d3;
+        }
+        button:hover
+        {
+            background-color: #034458;
+        }
     </style>
     <body>
         <span><h1>Bienvenido <?php echo ''.$row['firstname'].''; ?>!</h1></span>
@@ -123,6 +143,7 @@
                 echo "<div style=display:center;>No hay rutinas disponibles.</div>";
             }
             ?>
+            <br>
             <div style="display:center"><button onclick="location.href='sign_out.php'">Salir</button></div>
     </body>
 </html>
