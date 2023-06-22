@@ -1,12 +1,9 @@
 <?php 
     session_start();
-    echo "<script>console.log('id antes de inicar sesión');</script>";
-    echo "<script>console.log(".$_SESSION['client_id'].");</script>";
     include 'db_connection.php';
     if(isset($_SESSION["client_id"]))
     {
         $id = $_SESSION["client_id"];
-        echo "<script>console.log(".$_SESSION['client_id'].");</script>";
         $sql = "SELECT * FROM users WHERE id = '$id'";
         $result = mysqli_query($connection,$sql);
         $row = mysqli_fetch_array($result);
@@ -93,7 +90,7 @@
         <span><h1>Bienvenido <?php echo ''.$row['firstname'].''; ?>!</h1></span>
         <span><h3>Tus datos son los siguientes:</h3><span>
         <br>
-        <table>
+        <table> <!-- Tabla para mostrar los datos del usuario cliente -->
             <tr>
                <th>Nombre</th>
                <th>Apellidos</th>
@@ -112,6 +109,7 @@
         <br>
         <span><h3>Rutina asignadas:</h3><span>
         <?php
+            //Codigo encargado de mostrar al usuario las rutinas que tiene asignadas y que entrenador se las asigno.
             $id_rou = $row["id"];
             $sql_rou = "SELECT * FROM routines WHERE id_client = '$id_rou'";
             $result_rou = mysqli_query($connection,$sql_rou);

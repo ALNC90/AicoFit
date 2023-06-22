@@ -279,6 +279,7 @@
                     <a href="Registrar.php"><button style="transform: translate(160px, 320px); font-size: 30px; padding: 15px;"><span>Registrate aquí</span></button></a> <!-- Botón que redirige al usuario para el registro en página web -->
                 </div>
         </div>
+        <!-- Div de información a los usuarios finales que acceden a la aplicación -->
         <div style="height:700px; width:100%; background-image: url(./Images/Fondos/Gym_4.jpg); background-size: cover; position:relative; top:729px; display:block;" >
             <a name="about_us"></a>
             <span style="display: flex;">
@@ -295,12 +296,14 @@
             Además, nuestro gimnasio cuenta con una amplia variedad de equipos de alta calidad para garantizar que nuestros clientes tengan todo lo que necesitan para alcanzar sus objetivos. 
             También ofrecemos clases grupales y entrenamiento en circuito para aquellos que buscan una experiencia más social y motivadora.</p>
         </div>
+        <!-- Formularios de inicio de sesión -->
         <div style="height:700px; width:100%; background-image: url(./Images/Fondos/Gym_5.jpg); background-size: 100% 900px; position:relative; top:729px; display:block; text-align:center" >
             <a name="sign_in"></a>
             <span style="position: relative; display:flex; top:500px">
                 <h3 style="transform: translate(600px, -450px); color: white; font-size:30px;">ACCEDE</h3>
                 <div>
                     <h3 style="transform: translate(-10px, -350px); color: white; font-size:24px;">CLIENTE</h3>
+                    <!-- Formulario inicio sesión cliente -->
                     <form name="client_si" id="client_si" method="post" style="transform: translate(-10px, -320px);" action="login.php">
                         <label style="font-size:24px;" for="username_c">USUARIO:</label>
                         <br>
@@ -315,6 +318,7 @@
                 </div>
                 <div>
                     <h3 style="transform: translate(300px, -350px); color: white; font-size:24px;">ENTRENADOR</h3>
+                    <!-- Formulario inicio sesión entrenador -->
                     <form name="trainer_si" id="trainer_si" method="post" style="transform: translate(300px, -320px);" action="login.php">
                         <label style="font-size:24px;" for="username_t">USUARIO:</label>
                         <br>
@@ -329,6 +333,7 @@
                 </div>
             </span>             
         </div>
+        <!-- Div que contiene distintas rutinas realizadas por los entrenadores -->
         <div style="height:700px; width:100%; background-image: url(./Images/Fondos/Gym_6.jpg); background-size: 100% 900px; position:relative; top:729px; display:block;">
             <a name="routines"></a>
             <span style="position: relative; display:flex; top:100px">
@@ -379,6 +384,7 @@
                 </table>
             </span>
         </div>
+        <!-- Div que contiene el contacto  -->
         <div style="height:700px; width:100%; background-image: url(./Images/Fondos/Gym_6.jpg); background-size: 100% 900px; position:relative; top:729px; display:block;">
         <a name="contact"></a>
             <span style="position: relative; display:flex; top:100px;">
