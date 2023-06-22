@@ -1,4 +1,4 @@
-<?php include 'db_connection.php';?>
+<?php include 'db_connection.php';?> <!-- Incluimos la conexión con la base de datos en el fichero db_connection.php  -->
 <html lang="es">
     <head>
         <!-- Etiquetas "meta" donde aportamos información sobre la página -->
@@ -96,13 +96,14 @@
         <div class="container">
             <form>
                 <label for="account_type" style="font-family: 'Clean Sports Stencil'; color: white;">Tipo de cuenta:</label>
-                <select name="account_type" id="account_type" onchange="showForm()" style="height:50px; width: 300px">
+                <select name="account_type" id="account_type" onchange="showForm()" style="height:50px; width: 300px"> <!-- Selector que ejecuta el script en el cambio de opción -->
                     <option value="" disabled selected>-- Selecciona el tipo de cuenta --</option>
                     <option value="client">Cliente</option>
                     <option value="trainer">Entrenador</option>
                 </select>
             </form>
-            <form name="form_client" id="form_client" style="display: none;" onsubmit="return validatePassClient()"  method="post">
+            <!-- Formulario de registro del cliente -->
+            <form name="form_client" id="form_client" style="display: none;" onsubmit="return validatePassClient()"  method="post"> <!-- Ejecuta el scriptt de comprobación en el momento que se envia el formualuario y si la vuelta es verdadera procede -->
 
                 <h1>DATOS DE REGISTRO</h1>
                 <label for="username">Usuario:</label>
@@ -138,7 +139,8 @@
                 <br>
 
             </form>
-            <form name="form_trainer" id="form_trainer" style="display: none;" onsubmit="return validatePassTrainer()"  method="post">
+            <!-- Formulario de registro del entrenador -->
+            <form name="form_trainer" id="form_trainer" style="display: none;" onsubmit="return validatePassTrainer()"  method="post"> <!-- Ejecuta el scriptt de comprobación en el momento que se envia el formualuario y si la vuelta es verdadera procede -->
 
                 <h1>DATOS DE REGISTRO</h1>
                 <label for="username">Usuario:</label>
@@ -159,38 +161,48 @@
 
             </form>
             <?php
-            if(isset($_POST['create']))
+            if(isset($_POST['create'])) //Comprueba que se haya declarado contenido dentro de create
             {
+                //Recoge los valores de username y mail
                 $username = $_POST["username"];
                 $mail = $_POST["mail"];
+                //Comprobación de que el tipo sea cliente
                 if ($_POST['type'] === 'client')
                 {
+                    //Ejecucción de consulta dentro de la tabla users con los valores recogidos anteriormente.
                     $sql_user = "SELECT * FROM users WHERE username='$username'";
                     $sql_mail = "SELECT * FROM users WHERE email='$mail'";
                     $result_user = $connection->query($sql_user);
                     $result_mail = $connection->query($sql_mail);
 
+                    //Comprobación de que no hayan mas de 0 filas si no se alerta al usuario de que ya existe ese usuario
                     if($result_user->num_rows > 0)
                     {
                         echo '<script>alert("El nombre de usuario ya existe. Elija otro usuario diferente.");</script>';
                     }
+                    //Comprobación de que no hayan mas de 0 filas si no se alerta al usuario de que ya existe ese email
                     elseif ($result_mail->num_rows > 0)
                     {
                         echo '<script>alert("El correo el electrónico ya se encuentra registrado en esta plataforma.");</script>';
                     }
                     else
                     {
+                        //Recogida de todos los valores enviados por el usaurio en variables
                         $password = $_POST["pass1_c"];
                         $firstname = $_POST["name"];
                         $surname = $_POST["surname"];
                         $age = $_POST["age"];
                         $u_height = $_POST["height"];
                         $u_weight = $_POST["weight"];
+                        //Creación de cadena de 32 bytes a cadena hexadecimal
                         $salt = bin2hex(random_bytes(32));
+                        //Creación del hash de la contraseña
                         $hashed_password = hash('sha256', $password . $salt);
+                        //Query para la introducción de los valores dentro de la tabla users.
                         $sql_client = "INSERT INTO users (username,email,firstname,surename,age,u_weight,u_height,password_hash,salt) 
                         VALUES ('$username','$mail','$firstname','$surname',$age,$u_weight,$u_height,'$hashed_password','$salt')";
 
+                        //Comprobación de que la query se ha ejecutado 
                         if(mysqli_query($connection, $sql_client))
                         {
                             echo '<script>alert("La cuenta se ha creado correctamente.");</script>';
@@ -204,29 +216,38 @@
                     }
                     mysqli_close($connection);
                 }
+                //Comprobación de que el tipo sea entrenador
                 else if ($_POST['type'] === 'trainer')
                 {
+                    //Ejecucción de consulta dentro de la tabla users con los valores recogidos anteriormente.
                     $sql_user = "SELECT * FROM trainers WHERE username='$username'";
                     $sql_mail = "SELECT * FROM trainers WHERE email='$mail'";
                     $result_user = $connection->query($sql_user);
                     $result_mail = $connection->query($sql_mail);
 
+                    //Comprobación de que no hayan mas de 0 filas si no se alerta al usuario de que ya existe ese usuario
                     if($result_user->num_rows > 0)
                     {
                         echo '<script>alert("El nombre de usuario ya existe. Elija otro usuario diferente.");</script>';
                     }
+                    //Comprobación de que no hayan mas de 0 filas si no se alerta al usuario de que ya existe ese email
                     elseif ($result_mail->num_rows > 0)
                     {
                         echo '<script>alert("El correo el electrónico ya se encuentra registrado en esta plataforma.");</script>';
                     }
                     else
                     {
+                        //Recogida de todos los valores enviados por el usaurio en variables
                         $password = $_POST["pass1_t"];
+                        //Creación de cadena de 32 bytes a cadena hexadecimal
                         $salt = bin2hex(random_bytes(32));
+                        //Creación del hash de la contraseña
                         $hashed_password = hash('sha256', $password . $salt);
+                        //Query para la introducción de los valores dentro de la tabla users.
                         $sql_trainer = "INSERT INTO trainers (username,email,password_hashed,salt) 
                         VALUES ('$username','$mail','$hashed_password','$salt')";
 
+                        //Comprobación de que la query se ha ejecutado 
                         if(mysqli_query($connection, $sql_trainer))
                         {
                             echo '<script>alert("La cuenta se ha creado correctamente.");</script>';

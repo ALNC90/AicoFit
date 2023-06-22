@@ -20,6 +20,7 @@ function showForm () { //Creamos la función "showForm" la cual se encargara de 
     }
 }
 
+//Función  que se encarga de recoger las contraseñas que ha mandado el cliente y comprobar si estas son iguales
 function validatePassClient() {
     var cpass1 = document.getElementById("pass1_c").value;
     var cpass2 = document.getElementById("pass2_c").value;
@@ -33,6 +34,7 @@ function validatePassClient() {
     return true;
 }
 
+//Función  que se encarga de recoger las contraseñas que ha mandado el entrenador y comprobar si estas son iguales
 function validatePassTrainer() {
     var tpass1 = document.getElementById("pass1_t").value;
     var tpass2 = document.getElementById("pass2_t").value;

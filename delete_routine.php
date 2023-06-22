@@ -1,6 +1,7 @@
 <?php
 include 'db_connection.php';
 
+//Elimina las rutinas de la tabla de rutinas
 if (isset($_POST["id"])) {
     $routine_id = $_POST["id"];
     $sql = "DELETE FROM routines WHERE id_rou = '$routine_id'";
